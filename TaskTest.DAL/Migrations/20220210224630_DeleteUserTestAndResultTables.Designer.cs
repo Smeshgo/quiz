@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskTest.DAL.EF;
 
 namespace TaskTest.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220210224630_DeleteUserTestAndResultTables")]
+    partial class DeleteUserTestAndResultTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -281,15 +283,15 @@ namespace TaskTest.DAL.Migrations
 
             modelBuilder.Entity("TestUser", b =>
                 {
-                    b.Property<Guid>("TestId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserTestSId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("TestId", "UserId");
+                    b.Property<Guid>("UserTestsTestId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasIndex("UserId");
+                    b.HasKey("UserTestSId", "UserTestsTestId");
+
+                    b.HasIndex("UserTestsTestId");
 
                     b.ToTable("TestUser");
                 });
@@ -365,15 +367,15 @@ namespace TaskTest.DAL.Migrations
 
             modelBuilder.Entity("TestUser", b =>
                 {
-                    b.HasOne("TaskTest.DAL.Entities.Test", null)
+                    b.HasOne("TaskTest.DAL.Entities.User", null)
                         .WithMany()
-                        .HasForeignKey("TestId")
+                        .HasForeignKey("UserTestSId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TaskTest.DAL.Entities.User", null)
+                    b.HasOne("TaskTest.DAL.Entities.Test", null)
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserTestsTestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

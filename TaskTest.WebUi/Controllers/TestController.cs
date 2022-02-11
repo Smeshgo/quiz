@@ -45,5 +45,14 @@ namespace TaskTest.WebUi.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("GetTest")]
+        public async Task<IActionResult> GetTestToUser()
+        {
+            var result = _testService.GetUserByTests() ;
+
+            return Ok(result);
+        }
+
     }
 }

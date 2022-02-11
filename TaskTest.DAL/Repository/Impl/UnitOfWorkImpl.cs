@@ -7,7 +7,7 @@ namespace TaskTest.DAL.Repository.Impl
     {
         private readonly ApplicationDbContext _repositoryContext;
         private IRepositoryTest _repositoryTest;
-        private IRepositoryUserTest _repositoryUserTest;
+        private IRepositoryUser _repositoryUser;
 
         public UnitOfWorkImpl(ApplicationDbContext repositoryContext)
         {
@@ -22,13 +22,14 @@ namespace TaskTest.DAL.Repository.Impl
                 return _repositoryTest;
             }
         }
-        public IRepositoryUserTest UserTest
+
+        public IRepositoryUser User
         {
             get
             {
-                if (_repositoryUserTest == null)
-                    _repositoryUserTest = new RepositoryUserTestImpl(_repositoryContext);
-                return _repositoryUserTest;
+                if (_repositoryUser == null)
+                    _repositoryUser = new RepositoryUserImpl(_repositoryContext);
+                return _repositoryUser;
             }
         }
 

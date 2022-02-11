@@ -39,7 +39,9 @@ namespace TaskTest.DAL.Repository.Impl
             return result;
         }
 
-
-       
+        public void UpdateUser(Test test)
+        {
+            Update(test);
+        }
     }
 }

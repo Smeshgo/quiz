@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vna53J8cfGje/qCmAaEdQVHXCdKeRL9yEMGr2Ah7eQ+2qdlVkoc5L0jJMoUJNT6ExWIPhyNbe4r49MtbpYx19A==",
+  "dgSpecHash": "XzoIp7LXf6l5Lh48dpim4dNiTmX0I9t9eP8jcs7r4I3zfiXjnYqp4cT67R7UYBHPsqJ5g6gMY32MRWRX2pI6VQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Oleg\\OneDrive\\Desktop\\task\\TaskTest.WebUi\\TaskTest.DAL\\TaskTest.DAL.csproj",
+  "projectFilePath": "C:\\Users\\Oleg\\OneDrive\\Desktop\\task\\quiz\\TaskTest.DAL\\TaskTest.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Oleg\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Oleg\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

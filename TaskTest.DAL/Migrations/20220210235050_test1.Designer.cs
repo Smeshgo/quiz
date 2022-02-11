@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskTest.DAL.EF;
 
 namespace TaskTest.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220210235050_test1")]
+    partial class test1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -281,13 +283,13 @@ namespace TaskTest.DAL.Migrations
 
             modelBuilder.Entity("TestUser", b =>
                 {
-                    b.Property<Guid>("TestId")
+                    b.Property<Guid>("TestsTestId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("TestId", "UserId");
+                    b.HasKey("TestsTestId", "UserId");
 
                     b.HasIndex("UserId");
 
@@ -367,7 +369,7 @@ namespace TaskTest.DAL.Migrations
                 {
                     b.HasOne("TaskTest.DAL.Entities.Test", null)
                         .WithMany()
-                        .HasForeignKey("TestId")
+                        .HasForeignKey("TestsTestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

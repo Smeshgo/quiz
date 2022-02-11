@@ -45,26 +45,22 @@ namespace TaskTest.BLL.Service
         {
 
             var tests = await _repository.Test.GetAllTests();
-            var dictionaryTestsRandom = RandomTests(tests.ToList());
 
-            List<UserTest> result = new();
+            var dictionaryTestsRandom = RandomTests(tests.ToList());
 
             foreach (var VARIABLE in dictionaryTestsRandom.Values)
             {
-                UserTest userTest = new(user, VARIABLE);
-                //UserTest userTest = new(user, dictionaryTestsRandom.Values.First());
-                _repository.UserTest.CrateUserTest(userTest);
+                VARIABLE.User.Add(user);
+                _repository.Test.UpdateUser(VARIABLE);
 
             }
-
-            //for (int i = 0; i < testsRandom.Result.Count; i++)
-            //{
-            //    UserTest userTest = new(user, testsRandom.Result[i]);
-            //    result.Add(userTest);
-            //}
             await _repository.SaveAsync();
+        }
 
-
+        public IQueryable<DAL.Entities.User> GetUserByTests()
+        {
+            var result = _repository.User.GetUserByTests();
+            return result;
         }
 
         public static Dictionary<int, Test> RandomTests(List<Test> test)
@@ -112,5 +108,6 @@ namespace TaskTest.BLL.Service
 
             return isUnique;
         }
+
     }
 }

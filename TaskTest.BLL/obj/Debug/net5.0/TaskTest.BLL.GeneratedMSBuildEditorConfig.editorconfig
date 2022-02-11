@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = TaskTest.BLL
-build_property.ProjectDir = C:\Users\Oleg\OneDrive\Desktop\task\TaskTest.WebUi\TaskTest.BLL\
+build_property.ProjectDir = C:\Users\Oleg\OneDrive\Desktop\task\quiz\TaskTest.BLL\

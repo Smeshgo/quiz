@@ -15,5 +15,6 @@ namespace TaskTest.BLL.Service
         Task<IEnumerable<TestResponse>> GetTestAndQuestion(Guid testId);
         Task<IEnumerable<TestResponseMany>> GetTestAndQuestionMany(Guid testId);
         Task SetUserTests(DAL.Entities.User user);
+        IQueryable<DAL.Entities.User> GetUserByTests();
     }
 }

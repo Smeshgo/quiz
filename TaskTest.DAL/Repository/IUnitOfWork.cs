@@ -5,7 +5,7 @@ namespace TaskTest.DAL.Repository
     public interface IUnitOfWork
     {
         IRepositoryTest Test { get; }
-        IRepositoryUserTest UserTest { get; }
+        IRepositoryUser User { get; }
         Task SaveAsync();
     }
 }

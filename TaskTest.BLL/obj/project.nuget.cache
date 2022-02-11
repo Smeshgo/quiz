@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9HbjE0zXPiIsrwD4pkzI6U2218i+4htmdUkrgKtn94HUdGri0aYZrLQR24DNEMtSpLs0am69FPwU5xfE2MTNqA==",
+  "dgSpecHash": "iK0QRnxvfvIINEtMYaviWsq1Hq7KH0y0vriOGDYXZlFQRQTezkKWHqlJm8VKKR18vrJQlI4x0FDZIssCAKBkOQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Oleg\\OneDrive\\Desktop\\task\\TaskTest.WebUi\\TaskTest.BLL\\TaskTest.BLL.csproj",
+  "projectFilePath": "C:\\Users\\Oleg\\OneDrive\\Desktop\\task\\quiz\\TaskTest.BLL\\TaskTest.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Oleg\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Oleg\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",

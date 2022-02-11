@@ -12,5 +12,6 @@ namespace TaskTest.DAL.Repository
         Task<IQueryable<Test>> GetAllTests();
         Task<List<Test>> GetTestAndQuestion(Guid testId);
         Task<List<Test>> GetTestAndQuestionMany();
+        void UpdateUser(Test test);
     }
 }
