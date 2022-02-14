@@ -43,6 +43,11 @@ namespace TaskTest.WebUi
                 configuration.RootPath = "ClientApp/build";
             });
             services.AddControllers();
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = false;
+            });
 
             var mapperConfig = new MapperConfiguration(cfg =>
             {
@@ -87,13 +92,25 @@ namespace TaskTest.WebUi
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
+            app.UseSpaStaticFiles();
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "client-app";
+                if (env.IsDevelopment())
+                {
+                    // Launch development server for Nuxt
+                    spa.UseNuxtDevelopmentServer();
+                }
+            });
+
+            app.UseSpaStaticFiles();
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
-
                 if (env.IsDevelopment())
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
+                    // Launch development server for Nuxt
+                    spa.UseNuxtDevelopmentServer();
                 }
             });
         }

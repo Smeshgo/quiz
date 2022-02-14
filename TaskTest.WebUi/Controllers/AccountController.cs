@@ -39,6 +39,7 @@ namespace TaskTest.WebUi.Controllers
                 User user = new() { Email = model.Email, UserName = model.Email, };
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     // установка куки

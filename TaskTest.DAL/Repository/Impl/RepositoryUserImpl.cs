@@ -12,9 +12,9 @@ namespace TaskTest.DAL.Repository.Impl
 
         }
 
-        public IQueryable<User> GetUserByTests()
+        public IQueryable<User> GetUserByTests(string emailUser)
         {
-            var result = RepositoryContext.Users
+            var result = RepositoryContext.Users.Where(user => user.Email == emailUser)
                 .Include(user => user.Test).ThenInclude(tests => tests.Questions)
                 .ThenInclude(qustions => qustions.Answers);
             return result;

@@ -5,6 +5,6 @@ namespace TaskTest.DAL.Repository
 {
     public interface IRepositoryUser
     {
-        IQueryable<User> GetUserByTests();
+        IQueryable<User> GetUserByTests(string emailUser);
     }
 }

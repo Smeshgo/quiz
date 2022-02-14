@@ -57,9 +57,9 @@ namespace TaskTest.BLL.Service
             await _repository.SaveAsync();
         }
 
-        public IQueryable<DAL.Entities.User> GetUserByTests()
+        public IQueryable<DAL.Entities.User> GetUserByTests(string emailUser)
         {
-            var result = _repository.User.GetUserByTests();
+            var result = _repository.User.GetUserByTests(emailUser);
             return result;
         }
 

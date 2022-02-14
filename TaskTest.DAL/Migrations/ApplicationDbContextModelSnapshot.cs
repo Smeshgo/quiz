@@ -191,6 +191,25 @@ namespace TaskTest.DAL.Migrations
                     b.ToTable("Questions");
                 });
 
+            modelBuilder.Entity("TaskTest.DAL.Entities.Result", b =>
+                {
+                    b.Property<Guid>("ResultId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Score")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid?>("UserTestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ResultId");
+
+                    b.HasIndex("UserTestId");
+
+                    b.ToTable("Results");
+                });
+
             modelBuilder.Entity("TaskTest.DAL.Entities.Test", b =>
                 {
                     b.Property<Guid>("TestId")
@@ -279,19 +298,25 @@ namespace TaskTest.DAL.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("TestUser", b =>
+            modelBuilder.Entity("TaskTest.DAL.Entities.UserTest", b =>
                 {
-                    b.Property<Guid>("TestId")
+                    b.Property<Guid>("UserTestId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UserId")
+                    b.Property<Guid?>("TestsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("TestId", "UserId");
+                    b.HasKey("UserTestId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("TestsId");
 
-                    b.ToTable("TestUser");
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("UserTests");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -363,19 +388,28 @@ namespace TaskTest.DAL.Migrations
                     b.Navigation("Tests");
                 });
 
-            modelBuilder.Entity("TestUser", b =>
+            modelBuilder.Entity("TaskTest.DAL.Entities.Result", b =>
                 {
-                    b.HasOne("TaskTest.DAL.Entities.Test", null)
-                        .WithMany()
-                        .HasForeignKey("TestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("TaskTest.DAL.Entities.UserTest", "UserTest")
+                        .WithMany("Results")
+                        .HasForeignKey("UserTestId");
 
-                    b.HasOne("TaskTest.DAL.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("UserTest");
+                });
+
+            modelBuilder.Entity("TaskTest.DAL.Entities.UserTest", b =>
+                {
+                    b.HasOne("TaskTest.DAL.Entities.Test", "Test")
+                        .WithMany("UserTestS")
+                        .HasForeignKey("TestsId");
+
+                    b.HasOne("TaskTest.DAL.Entities.User", "User")
+                        .WithMany("UserTests")
+                        .HasForeignKey("UsersId");
+
+                    b.Navigation("Test");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TaskTest.DAL.Entities.Question", b =>
@@ -386,6 +420,18 @@ namespace TaskTest.DAL.Migrations
             modelBuilder.Entity("TaskTest.DAL.Entities.Test", b =>
                 {
                     b.Navigation("Questions");
+
+                    b.Navigation("UserTestS");
+                });
+
+            modelBuilder.Entity("TaskTest.DAL.Entities.User", b =>
+                {
+                    b.Navigation("UserTests");
+                });
+
+            modelBuilder.Entity("TaskTest.DAL.Entities.UserTest", b =>
+                {
+                    b.Navigation("Results");
                 });
 #pragma warning restore 612, 618
         }

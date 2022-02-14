@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using TaskTest.BLL.Service;
 using TaskTest.DAL.Entities;
 
@@ -9,7 +10,7 @@ namespace TaskTest.WebUi.Controllers
 {
     [Route("api/test")]
     [ApiController]
-    // [Authorize]
+  //  [Authorize]
     public class TestController : Controller
     {
         private readonly ITestService _testService;
@@ -49,7 +50,9 @@ namespace TaskTest.WebUi.Controllers
         [Route("GetTest")]
         public async Task<IActionResult> GetTestToUser()
         {
-            var result = _testService.GetUserByTests() ;
+            var user = await _userManager.GetUserAsync(User);
+            var emailUser = user.Email;
+            var result = _testService.GetUserByTests(emailUser);
 
             return Ok(result);
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Primitives;
 using TaskTest.BLL.DTO.Test;
 using TaskTest.DAL.Entities;
 
@@ -15,6 +16,6 @@ namespace TaskTest.BLL.Service
         Task<IEnumerable<TestResponse>> GetTestAndQuestion(Guid testId);
         Task<IEnumerable<TestResponseMany>> GetTestAndQuestionMany(Guid testId);
         Task SetUserTests(DAL.Entities.User user);
-        IQueryable<DAL.Entities.User> GetUserByTests();
+        IQueryable<DAL.Entities.User> GetUserByTests(string emailUser);
     }
 }
